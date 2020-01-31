@@ -3,6 +3,7 @@ import random
 import timeit
 import cProfile
 
+
 # Вариант № 1
 
 def change_max_min_1(MIN_ITEM, MAX_ITEM, SIZE):
@@ -23,6 +24,7 @@ def change_max_min_1(MIN_ITEM, MAX_ITEM, SIZE):
             array_1[pos] = min_
 
     return array_1
+
 
 # print(timeit.timeit('change_max_min_1(-100, 100, 10)', number=100, globals=globals()))  # 0.002379399999999997
 # print(timeit.timeit('change_max_min_1(-100, 100, 20)', number=100, globals=globals()))  # 0.004330800000000003
@@ -66,11 +68,12 @@ def change_max_min_2(MIN_ITEM, MAX_ITEM, SIZE):
     for item in range(1, SIZE):
         if array_1[item] > array_1[max_pos]:
             max_pos = item
-        elif array_1[item]  < array_1[min_pos]:
+        elif array_1[item] < array_1[min_pos]:
             min_pos = item
 
     array_1[min_pos], array_1[max_pos] = array_1[max_pos], array_1[min_pos]
     return array_1
+
 
 # print(timeit.timeit('change_max_min_2(-100, 100, 10)', number=100, globals=globals()))  # 0.0025270000000000015
 # print(timeit.timeit('change_max_min_2(-100, 100, 20)', number=100, globals=globals()))  # 0.004698399999999998
@@ -122,16 +125,17 @@ def change_max_min_3(MIN_ITEM, MAX_ITEM, SIZE):
         if n == 0:
             return min_pos, max_pos
         else:
-            if array_1[n-1] > array_1[n]:
+            if array_1[n - 1] > array_1[n]:
                 max_pos = n - 1
-            elif array_1[n-1] < array_1[n]:
+            elif array_1[n - 1] < array_1[n]:
                 min_pos = n - 1
-        return get_min_max(n-1)
+        return get_min_max(n - 1)
 
-    min_pos, max_pos = get_min_max(SIZE-1)
+    min_pos, max_pos = get_min_max(SIZE - 1)
     array_1[min_pos], array_1[max_pos] = array_1[max_pos], array_1[min_pos]
 
     return array_1
+
 
 # print(change_max_min_3(-100, 100, 10))
 
